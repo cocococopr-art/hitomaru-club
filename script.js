@@ -8,7 +8,7 @@
    blog_postsシートを「ウェブに公開」して取得したCSV URLを貼る
 --------------------------------------------------------- */
 const BLOG_CSV_URL =
-  "ここにblog_postsシートのCSV公開URLを入れる";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLz-N6wU0JHdIw_lO0ffpiXJS8gQkSfmVE79K1Coh2sOKC0IDoXFzf4rtIAfPW-opo0SoY_0DiLwik/pub?output=csv";
 
 /* URL未設定・取得失敗時の表示確認用サンプル */
 const FALLBACK_POSTS = [
