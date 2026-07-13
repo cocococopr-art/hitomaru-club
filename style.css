@@ -408,3 +408,231 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---------------------------------------------------------
+   ≡ メニューボタンと月別アーカイブドロワー
+--------------------------------------------------------- */
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.menu-button {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .18s ease;
+}
+
+.menu-button:hover { border-color: var(--ink); }
+
+.menu-button span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.drawer {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+}
+
+.drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 40, 46, .28);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+
+.drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(82vw, 320px);
+  padding: 20px 20px 32px;
+  overflow-y: auto;
+  background: #fff;
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);
+  transition: transform .22s ease;
+}
+
+.drawer.is-open .drawer-overlay { opacity: 1; }
+.drawer.is-open .drawer-panel { transform: translateX(0); }
+
+body.drawer-locked { overflow: hidden; }
+
+.drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer-title {
+  color: var(--ink);
+  font-family: var(--heading);
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: .2em;
+}
+
+.drawer-title small {
+  display: block;
+  margin-top: 2px;
+  color: var(--sub);
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.drawer-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--sub);
+  cursor: pointer;
+}
+
+.drawer-close:hover { color: var(--ink); border-color: var(--ink); }
+
+.month-list {
+  margin-top: 8px;
+  list-style: none;
+}
+
+.month-loading {
+  padding: 20px 4px;
+  color: var(--sub);
+  font-size: 13px;
+}
+
+.month-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--ink-soft);
+  font-size: 14px;
+  letter-spacing: .04em;
+  text-align: left;
+  cursor: pointer;
+  transition: color .15s ease;
+}
+
+.month-item:hover { color: var(--accent); }
+
+.month-item small {
+  color: var(--sub);
+  font-size: 11px;
+}
+
+.month-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* 月フィルター中の表示バー */
+.active-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.active-month button {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   複数写真:一覧の枚数バッジ / 記事ギャラリー
+--------------------------------------------------------- */
+
+.photo-count {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(36, 40, 46, .62);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.article-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.article-gallery.is-single {
+  grid-template-columns: 1fr;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (min-width: 650px) {
+  .article-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .article-gallery.is-single {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
