@@ -20,8 +20,31 @@
           <small>日記・お知らせ・現場の学び</small>
         </span>
       </a>
+      <button
+        id="menuButton"
+        class="menu-button"
+        type="button"
+        aria-label="月別アーカイブを開く"
+        aria-expanded="false"
+        aria-controls="drawer"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="drawer-panel" aria-label="月別アーカイブ">
+      <div class="drawer-head">
+        <p class="drawer-title">ARCHIVE<small>月別に見返す</small></p>
+        <button id="drawerClose" class="drawer-close" type="button" aria-label="メニューを閉じる">×</button>
+      </div>
+      <ul class="month-list" id="monthList">
+        <li class="month-loading">読み込み中…</li>
+      </ul>
+    </nav>
+  </div>
 
   <main class="main-content">
     <section class="hero">
@@ -44,6 +67,12 @@
           <option value="社内文化">社内文化</option>
         </select>
       </div>
+
+      <div class="active-month" id="activeMonth" hidden>
+        <span id="activeMonthLabel"></span>
+        <button id="clearMonth" type="button">解除 ×</button>
+      </div>
+
       <div class="post-grid" id="postList" aria-live="polite">
         <div class="loading">記事を読み込んでいます。</div>
       </div>
