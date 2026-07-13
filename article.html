@@ -20,8 +20,31 @@
           <small>日記・お知らせ・現場の学び</small>
         </span>
       </a>
+      <button
+        id="menuButton"
+        class="menu-button"
+        type="button"
+        aria-label="月別アーカイブを開く"
+        aria-expanded="false"
+        aria-controls="drawer"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="drawer-panel" aria-label="月別アーカイブ">
+      <div class="drawer-head">
+        <p class="drawer-title">ARCHIVE<small>月別に見返す</small></p>
+        <button id="drawerClose" class="drawer-close" type="button" aria-label="メニューを閉じる">×</button>
+      </div>
+      <ul class="month-list" id="monthList">
+        <li class="month-loading">読み込み中…</li>
+      </ul>
+    </nav>
+  </div>
 
   <main class="article-page">
     <a class="back-link" href="./index.html">← 記事一覧へ戻る</a>
