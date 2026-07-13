@@ -1,1 +1,410 @@
+/* =========================================================
+   HITOMARU CLUB style.css
+   白基調 / 見出し: Zen Maru Gothic Light(300)
+   本文: Zen Kaku Gothic New
+   ========================================================= */
 
+:root {
+  --ink: #24282e;          /* 本文の墨色 */
+  --ink-soft: #4a5058;
+  --sub: #8b929c;          /* 補足テキスト */
+  --line: #ececec;         /* ヘアライン */
+  --line-strong: #dfdfdf;
+  --background: #ffffff;
+  --surface: #ffffff;
+  --accent: #2f6f6a;       /* 深緑がかったアクセント(リンク・強調) */
+  --accent-soft: #eef4f3;
+
+  /* カテゴリ用の淡色 */
+  --news-bg: #fdf0f2;   --news-fg: #b04a5d;
+  --diary-bg: #eef6f0;  --diary-fg: #3d7a58;
+  --train-bg: #f2effa;  --train-fg: #6f5aa8;
+  --cult-bg: #fbf4e6;   --cult-fg: #97690f;
+
+  --heading: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  --body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-width: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+button, select, input, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* すべての見出しを細字の丸ゴシックに */
+h1, h2, h3 {
+  font-family: var(--heading);
+  font-weight: 300;
+}
+
+/* ---------------------------------------------------------
+   ヘッダー
+--------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, .9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.header-inner,
+.main-content,
+.article-page {
+  width: min(100% - 40px, 760px);
+  margin-inline: auto;
+}
+
+.header-inner { padding-block: 14px; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ロゴマーク:塗りをやめ、細い輪郭の円に */
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  font-family: var(--heading);
+  font-size: 19px;
+  font-weight: 300;
+}
+
+.brand-copy strong,
+.brand-copy small { display: block; }
+
+.brand-copy strong {
+  color: var(--ink);
+  font-family: var(--heading);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: .18em;
+}
+
+.brand-copy small {
+  color: var(--sub);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+/* ---------------------------------------------------------
+   ヒーロー:白地+細字の大見出し+ヘアライン
+--------------------------------------------------------- */
+
+.main-content { padding-block: 48px 88px; }
+
+.hero {
+  padding-block: 16px 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
+
+.hero h1 {
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: clamp(30px, 8vw, 46px);
+  letter-spacing: .04em;
+  line-height: 1.5;
+}
+
+.hero p {
+  margin-top: 18px;
+  max-width: 34em;
+  color: var(--sub);
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   記事一覧
+--------------------------------------------------------- */
+
+.posts-section { margin-top: 44px; }
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.section-head span {
+  color: var(--sub);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.section-head h2 {
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 24px;
+  letter-spacing: .05em;
+}
+
+.section-head select {
+  min-height: 44px;
+  max-width: 42%;
+  padding-inline: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.section-head select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+/* カード:枠と影を最小限に、余白と罫線で区切る */
+.post-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color .18s ease, transform .18s ease;
+}
+
+.post-card:active { transform: scale(.99); }
+
+.post-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #fafafa;
+}
+
+.post-image-fallback {
+  color: #c9ced4;
+  font-family: var(--heading);
+  font-weight: 300;
+  letter-spacing: .3em;
+  font-size: 13px;
+}
+
+.post-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin-badge {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .95);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.post-card-body { padding: 20px; }
+
+.post-meta,
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--sub);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.category {
+  display: inline-flex;
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.category.is-news     { background: var(--news-bg);  color: var(--news-fg); }
+.category.is-diary    { background: var(--diary-bg); color: var(--diary-fg); }
+.category.is-training { background: var(--train-bg); color: var(--train-fg); }
+.category.is-culture  { background: var(--cult-bg);  color: var(--cult-fg); }
+
+.post-card h2 {
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 20px;
+  letter-spacing: .03em;
+  line-height: 1.55;
+}
+
+.post-card-body > p {
+  margin-top: 8px;
+  color: var(--sub);
+  font-size: 13px;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--sub);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.post-footer strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.loading,
+.empty {
+  padding: 48px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--sub);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   記事詳細ページ
+--------------------------------------------------------- */
+
+.article-page { padding-block: 36px 88px; }
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 26px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+
+#articleContent {
+  padding-top: 4px;
+}
+
+.article-image {
+  overflow: hidden;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fafafa;
+}
+
+.article-image img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+#articleContent h1 {
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: clamp(26px, 7vw, 40px);
+  letter-spacing: .04em;
+  line-height: 1.55;
+}
+
+.article-summary {
+  margin-top: 14px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.article-body {
+  margin-top: 30px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 2.1;
+}
+
+.article-body p + p { margin-top: 22px; }
+
+/* ---------------------------------------------------------
+   フッター
+--------------------------------------------------------- */
+
+.site-footer {
+  padding: 28px 16px;
+  border-top: 1px solid var(--line);
+  color: var(--sub);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   PC表示・アクセシビリティ
+--------------------------------------------------------- */
+
+@media (min-width: 650px) {
+  .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+  }
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
