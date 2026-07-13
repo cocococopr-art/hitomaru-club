@@ -20,7 +20,7 @@
    blog_postsシートを「ウェブに公開」して取得したCSV URLを貼る
 --------------------------------------------------------- */
 const BLOG_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLz-N6wU0JHdIw_lO0ffpiXJS8gQkSfmVE79K1Coh2sOKC0IDoXFzf4rtIAfPW-opo0SoY_0DiLwik/pubhtml";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLz-N6wU0JHdIw_lO0ffpiXJS8gQkSfmVE79K1Coh2sOKC0IDoXFzf4rtIAfPW-opo0SoY_0DiLwik/pub?gid=661311892&single=true&output=csv";
 
 /* URL未設定・取得失敗時の表示確認用サンプル */
 const FALLBACK_POSTS = [
