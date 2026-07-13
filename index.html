@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HITOMARU CLUB</title>
+  <meta name="description" content="HITOMARU CLUB — 日記・お知らせ・現場での学びを共有する社内ブログ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="HITOMARU CLUB トップへ">
+        <span class="brand-mark">H</span>
+        <span class="brand-copy">
+          <strong>HITOMARU&nbsp;CLUB</strong>
+          <small>日記・お知らせ・現場の学び</small>
+        </span>
+      </a>
+    </div>
+  </header>
 
+  <main class="main-content">
+    <section class="hero">
+      <span class="hero-label">INTERNAL MEDIA</span>
+      <h1>今日の現場から、<br>次の学びへ。</h1>
+      <p>現場日記・社内のお知らせ・研修で得た知識を、メンバー全員で共有するブログです。</p>
+    </section>
+
+    <section class="posts-section" aria-labelledby="latestPostsTitle">
+      <div class="section-head">
+        <div>
+          <span>LATEST POSTS</span>
+          <h2 id="latestPostsTitle">最新の記事</h2>
+        </div>
+        <select id="categoryFilter" aria-label="カテゴリーで絞り込む">
+          <option value="all">すべて</option>
+          <option value="お知らせ">お知らせ</option>
+          <option value="現場日記">現場日記</option>
+          <option value="研修">研修</option>
+          <option value="社内文化">社内文化</option>
+        </select>
+      </div>
+      <div class="post-grid" id="postList" aria-live="polite">
+        <div class="loading">記事を読み込んでいます。</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© HITOMARU CLUB</p></footer>
+  <script src="./script.js"></script>
+</body>
+</html>
