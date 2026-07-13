@@ -721,3 +721,6 @@ body.drawer-locked { overflow: hidden; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* hidden属性がdisplay指定に負けないようにする（重要） */
+[hidden] { display: none !important; }
