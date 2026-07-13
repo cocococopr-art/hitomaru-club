@@ -848,6 +848,36 @@ function articleImages(post) {
   `;
 }
 
+/* 添付・リンクセクション */
+function articleLinks(post) {
+  const links = post.linkList || [];
+
+  if (!links.length) return "";
+
+  return `
+    <div class="article-links">
+      <p class="article-links-title">添付・リンク</p>
+
+      <ul>
+        ${links.map(link => `
+          <li>
+            <a
+              class="link-chip"
+              href="${escapeHtml(link.url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-type">${escapeHtml(link.type)}</span>
+              <span class="link-label">${escapeHtml(link.label)}</span>
+              <span class="link-open">開く ↗</span>
+            </a>
+          </li>
+        `).join("")}
+      </ul>
+    </div>
+  `;
+}
+
 async function setupArticle() {
   const wrap = document.getElementById("articleContent");
 
@@ -905,6 +935,8 @@ async function setupArticle() {
       <div class="article-body">
         ${formatArticleBody(post.body)}
       </div>
+
+      ${articleLinks(post)}
     `;
   } catch (error) {
     console.error("記事の表示に失敗しました。", error);
