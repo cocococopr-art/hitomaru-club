@@ -20,7 +20,7 @@
    blog_postsシートを「ウェブに公開」して取得したCSV URLを貼る
 --------------------------------------------------------- */
 const BLOG_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLz-N6wU0JHdIw_lO0ffpiXJS8gQkSfmVE79K1Coh2sOKC0IDoXFzf4rtIAfPW-opo0SoY_0DiLwik/pub?output=csv";
+  "ここにblog_postsシートのCSV公開URLを入れる";
 
 /* URL未設定・取得失敗時の表示確認用サンプル */
 const FALLBACK_POSTS = [
@@ -742,13 +742,15 @@ async function setupPostList() {
 
       // 月フィルター表示の更新
       if (activeMonthBar && activeMonthLabel) {
-        if (state.month === "all") {
-          activeMonthBar.hidden = true;
-        } else {
-          activeMonthBar.hidden = false;
-          activeMonthLabel.textContent =
-            `${formatMonthLabel(state.month)} の記事`;
-        }
+        const isMonthActive =
+          state.month !== "all" &&
+          /^\d{4}-\d{2}$/.test(state.month);
+
+        activeMonthBar.hidden = !isMonthActive;
+
+        activeMonthLabel.textContent = isMonthActive
+          ? `${formatMonthLabel(state.month)} の記事`
+          : "";
       }
 
       // URLも同期(共有・リロード対応)
